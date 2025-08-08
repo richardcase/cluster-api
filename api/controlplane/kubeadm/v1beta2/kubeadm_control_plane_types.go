@@ -458,6 +458,11 @@ type KubeadmControlPlaneSpec struct {
 	// InfraMachines & KubeadmConfigs will use the same name as the corresponding Machines.
 	// +optional
 	MachineNaming MachineNamingSpec `json:"machineNaming,omitempty,omitzero"`
+
+	// kubeconfigConfig allows specifying additional options for the kubeconfig that is
+	// generated for the cluster.
+	// +optional
+	KubeconfigConfig *KubeconfigConfiguration `json:"kubeconfigConfig,omitempty"`
 }
 
 // KubeadmControlPlaneMachineTemplate defines the template for Machines
@@ -588,6 +593,12 @@ type KubeadmControlPlaneRolloutStrategyRollingUpdate struct {
 	// up immediately when the rolling update starts.
 	// +optional
 	MaxSurge *intstr.IntOrString `json:"maxSurge,omitempty"`
+}
+
+type KubeconfigConfiguration struct {
+	// proxyURL allows specifying a proxy to use in the kubeconfig.
+	// +optional
+	ProxyURL string `json:"proxyURL,omitempty"`
 }
 
 // KubeadmControlPlaneRemediationSpec controls how unhealthy control plane Machines are remediated.

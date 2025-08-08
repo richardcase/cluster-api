@@ -7211,6 +7211,16 @@ spec:
                     format: int32
                     type: integer
                 type: object
+              kubeconfigConfig:
+                description: |-
+                  kubeconfigConfig allows specifying additional options for the kubeconfig that is
+                  generated for the cluster.
+                properties:
+                  proxyURL:
+                    description: proxyURL allows specifying a proxy to use in the
+                      kubeconfig.
+                    type: string
+                type: object
               machineNaming:
                 description: |-
                   machineNaming allows changing the naming pattern used when creating Machines.
